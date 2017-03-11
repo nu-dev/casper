@@ -1,0 +1,22 @@
+{%
+for i,post in ipairs(posts) do
+if tonumber(i) >= tonumber(listing.start) and tonumber(i) < tonumber(listing.finish) then
+%}
+<div class="post">
+<span class="post-meta">Created {{ post.cdate }} | Last modified {{ post.mdate }} at {{ post.mtime }}</span>
+<h1><a href="{{ post.link }}">{{ post.name }}</a></h1>
+{{ post.contents }}
+</div>
+<hr />
+{%
+end
+end
+%}
+<div class="pagination">
+{% if not (listing.prevpage == nil) then %}<a class="pagination-newer" href="{{linkprefix}}{{ listing.prevpage }}">Newer</a>
+{% end %}<span class="pagination-pagenum">Page {{ listing.currpage }} of {{ listing.totalpages }}</span>
+{% if not (listing.nextpage == nil) then %}<a class="pagination-older" href="{{linkprefix}}{{ listing.nextpage }}">Older</a>
+{% end %}
+</div>
+
+

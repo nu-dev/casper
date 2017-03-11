@@ -1,0 +1,13 @@
+<div class="post">
+{% if not (post.is_special == "true") then %}
+<span class="post-meta">Created {{ post.cdate }} |
+Last modified {{ post.mdate }} at {{ post.mtime }} |
+<a href="{{linkprefix}}/{{ post.raw_link }}">Raw file</a>
+</span>
+{% end %}
+<h1>{{ post.name }}</h1>
+{{ post.contents }}
+{% if not (post.is_special == "true") then %}
+{{ disqus }}
+{% end %}
+</div>
